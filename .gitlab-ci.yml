@@ -1,0 +1,40 @@
+stages:
+  - build
+  - test
+  - deploy
+
+image: alpine 
+
+build-a:
+  stage: build
+  script: 
+    - echo "this job will do something."
+
+build-b:
+  stage: build
+  script: 
+    - echo "this job will do something else."
+
+test-a:
+  stage: test
+  script: 
+    - echo "this job test somthing. It will only run"
+    - echo "when all the jobs in the build is completed."
+
+test-b:
+  stage: test
+  script: 
+    - echo "this job test somthing else. It will only run its same like test-a"
+    - echo "when all the jobs in the build is completed."
+
+deploy-a:
+  stage: deploy
+  script: 
+    - echo "this job will deploy something. It will only run when"
+    - echo "when all tests complete."
+
+deploy-b:
+  stage: deploy
+  script: 
+    - echo "this job will deploy something else. It will only run when its like deploy-a"
+    - echo "when all tests complete."
